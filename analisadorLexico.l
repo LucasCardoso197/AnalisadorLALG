@@ -2,10 +2,10 @@
     int yywrap(void){};
 %}
 %{
-    enum TOKEN_TYPE {BLANK, IDENTIFICADOR, NUMERO_INTEIRO, NUMERO_REAL, 
-         OP_SOMA, OP_SUBT, OP_MULT, OP_DIV, OP_IGUAL, OP_DIF, OP_MAIGUAL,
-         OP_MEIGUAL, OP_MENOR, OP_MAIOR, OP_ATRIB, AB_PARENTESES, FE_PARENTESES,
-         PVIRGULA, VIRGULA, DOIS_PONTOS};
+    enum TOKEN_TYPE {blank, identificador, numero_inteiro, numero_real, 
+                     op_soma, op_subt, op_mult, op_div, op_igual, op_diferente, op_maior_igual,
+                     op_menor_igual, op_menor, op_maior, op_atribuicao, simb_abrir_parenteses, simb_fechar_parenteses,
+                     simb_ponto_virgula, simb_virgula, simb_dois_pontos};
 %}
 
 digit [0-9]
@@ -15,24 +15,24 @@ signal [-+]
 blank [\n\t ]
 
 %%
-({alpha}|_)({alpha}|_|{digit})* {return IDENTIFICADOR;}
-{digit}+ {return NUMERO_INTEIRO;}
-{digit}+\.{digit}+ {return NUMERO_REAL;}
-"+" {return OP_SOMA;}
-"-" {return OP_SUBT;}
-"*" {return OP_MULT;}
-"/" {return OP_DIV;}
-"=" {return OP_IGUAL;}
-"<>" {return OP_DIF;}
-">=" {return OP_MAIGUAL;}
-"<=" {return OP_MEIGUAL;}
-"<" {return OP_MENOR;}
-">" {return OP_MAIOR;}
-":=" {return OP_ATRIB;}
-"(" {return AB_PARENTESES;}
-")" {return FE_PARENTESES;}
-";" {return PVIRGULA;}
-"," {return VIRGULA;}
-":" {return DOIS_PONTOS;}
+({alpha}|_)({alpha}|_|{digit})* {return identificador;}
+{digit}+ {return numero_inteiro;}
+{digit}+\.{digit}+ {return numero_real;}
+"+" {return op_soma;}
+"-" {return op_subt;}
+"*" {return op_mult;}
+"/" {return op_div;}
+"=" {return op_igual;}
+"<>" {return op_diferente;}
+">=" {return op_maior_igual;}
+"<=" {return op_menor_igual;}
+"<" {return op_menor;}
+">" {return op_maior;}
+":=" {return op_atribuicao;}
+"(" {return simb_abrir_parenteses;}
+")" {return simb_fechar_parenteses;}
+";" {return simb_ponto_virgula;}
+"," {return simb_virgula;}
+":" {return simb_dois_pontos;}
 {blank}+ {} //ignora caracteres de novalinha e espaços em branco
 %%

@@ -7,10 +7,10 @@ extern int   yylex();
 extern char* yytext;
 extern int   yyleng;
 
-enum TOKEN_TYPE {BLANK, IDENTIFICADOR, NUMERO_INTEIRO, NUMERO_REAL, 
-         OP_SOMA, OP_SUBT, OP_MULT, OP_DIV, OP_IGUAL, OP_DIF, OP_MAIGUAL,
-         OP_MEIGUAL, OP_MENOR, OP_MAIOR, OP_ATRIB, AB_PARENTESES, FE_PARENTESES,
-         PVIRGULA, VIRGULA, DOIS_PONTOS};
+enum TOKEN_TYPE {blank, identificador, numero_inteiro, numero_real, 
+         op_soma, op_subt, op_mult, op_div, op_igual, op_diferente, op_maior_igual,
+         op_menor_igual, op_menor, op_maior, op_atribuicao, simb_abrir_parenteses, simb_fechar_parenteses,
+         simb_ponto_virgula, simb_virgula, simb_dois_pontos};
 const char *getTypeName(enum TOKEN_TYPE tipo);
 
 #endif
