@@ -30,3 +30,11 @@
 
 # Debug files
 *.dSYM/
+
+# Text files used as output
+out.txt
+lex.yy.c
+
+# Visual studio code files
+.vscode
+.vscode/*
