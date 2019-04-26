@@ -16,6 +16,7 @@ const char *getTypeName(enum TOKEN_TYPE tipo){
         case op_menor:  return "op_menor";
         case op_maior:  return "op_maior";
         case op_atribuicao:  return "op_atribuicao";
+        case simb_ponto: return "simb_ponto";
         case simb_abrir_parenteses:  return "simb_abrir_parenteses";
         case simb_fechar_parenteses:  return "simb_fechar_parenteses";
         case simb_ponto_virgula:  return "simb_ponto_virgula";

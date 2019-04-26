@@ -1,3 +1,5 @@
+{este programa testa o compilador}
+{testes com operadoes}
 +
 -
 *
@@ -8,14 +10,28 @@
 <
 <
 >
+{testes com simbolos}
+.
 :
 (
 )
 ;  
 ,
 : ,
+{testes com numeros}
 10
+1
 94.36
+13.
+1.1
+10000.1
+{testes com identificadores}
 _window
 numeroIdentificacao
 _lucas
+1_lucas
+1a
+{testes com caracteres invalidos}
+numero@com
+_lucas@
+@number
