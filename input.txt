@@ -35,3 +35,10 @@ _lucas
 numero@com
 _lucas@
 @number
+
+program lalg;
+{entrada}
+var a: integer;
+begin
+readd(a, @, 1);
+end.

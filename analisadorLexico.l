@@ -41,5 +41,4 @@ invalidCharacter [@]
 
 [^ \n]*{invalidCharacter}+[^ \n]* {fprintf(stderr, "Caractere invalido em: %s\n", yytext);}
 {digit}+({alpha}|_)({alpha}|_|{digit})* {fprintf(stderr, "Indentificador mal formado em: %s\n", yytext);}
-[^ \n]* {fprintf(stderr, "Erro lexico em: %s\n", yytext);}
 %%
