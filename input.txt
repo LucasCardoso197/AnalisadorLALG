@@ -1,5 +1,5 @@
 {este programa testa o compilador}
-{testes com operadoes}
+{testes com operadores}
 +
 -
 *
@@ -35,6 +35,9 @@ _lucas
 numero@com
 _lucas@
 @number
+{testes com numeros reais mal formados}
+3.a2
+3.3a2
 
 program lalg;
 {entrada}

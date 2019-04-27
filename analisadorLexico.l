@@ -39,6 +39,8 @@ invalidCharacter [@]
 \{.*\} {} // ignora comentarios
 {blank}+ {} //ignora caracteres de novalinha e espaços em branco
 
-[^ \n]*{invalidCharacter}+[^ \n]* {fprintf(stderr, "Caractere invalido em: %s\n", yytext);}
-{digit}+({alpha}|_)({alpha}|_|{digit})* {fprintf(stderr, "Indentificador mal formado em: %s\n", yytext);}
+{invalidCharacter} {fprintf(stdout, "%s - erro - caractere invalido\n", yytext);}
+{digit}+({alpha}|_)({alpha}|_|{digit})* {fprintf(stdout, "%s - error - identificador mal formado\n", yytext);}
+{digit}+\.{digit}*{alpha}{digit}* {fprintf(stdout, "%s - erro - numero real mal formado\n", yytext);}
+. {fprintf(stdout, "%s - erro", yytext);}
 %%
