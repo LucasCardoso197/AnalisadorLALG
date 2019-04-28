@@ -31,6 +31,7 @@ numeroIdentificacao
 _lucas
 1_lucas
 1a
+readd
 {testes com caracteres invalidos}
 numero@com
 _lucas@
@@ -43,5 +44,5 @@ program lalg;
 {entrada}
 var a: integer;
 begin
-readd(a, @, 1);
+read(a, @, 1);
 end.

@@ -1,5 +1,5 @@
 all: lex.yy.c lexer.c lexer.h
-	gcc -o a.out *.c
+	gcc -lm -o a.out *.c
 lex.yy.c: analisadorLexico.l
 	flex analisadorLexico.l
 run:
