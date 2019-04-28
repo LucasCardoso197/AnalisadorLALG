@@ -16,9 +16,11 @@ int main(){
 			strcpy(type, getTypeName(result));
 		}
 		else{
-			if(yyleng > 30) printf("%s - erro - identificador muito grande",yytext);
+			if(yyleng > 30){
+				strcpy(type,"- erro - identificador muito grande");
+			} 
 			else{
-				//Procura na tabela hash a palavra reservada
+				//Procura na tabxela hash a palavra reservada
 				if(hash_get(table,get_key(yytext)) ){
 					strcpy(type, hash_get(table,get_key(yytext)));
 				}else
