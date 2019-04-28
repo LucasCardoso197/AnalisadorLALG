@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include <string.h>
 #include <time.h>
 
@@ -21,12 +22,11 @@ typedef struct {
 	HASH_ENTRY *entries;
 } HASH_TABLE;
 
-HASH_TABLE *hash_create(int n) {
-	HASH_TABLE *table = (HASH_TABLE *)malloc(sizeof(HASH_TABLE));
-	table->nelements = n;
-	table->entries = (HASH_ENTRY *) calloc(n, sizeof(HASH_ENTRY));
-	return table;
-}
+char *palavra_reservada[]={"begin","const","do",
+							"end","else","for","if",
+							"integer","procedure","program",
+							"real","read","while","write"};
+
 
 void hash_destroy(HASH_TABLE *table) {
 	if (table != NULL) {
@@ -42,10 +42,8 @@ bool hash_put(HASH_TABLE *table, int key, void *content) {
 	// aplicar funcao de espalhamento
 	position = key % table->nelements;
 
-	while (table->entries[position].flag &&
-			i < table->nelements) {
-		position = ((key % table->nelements) + i) %
-				table->nelements;
+	while (table->entries[position].flag && i < table->nelements) {
+		position = ((key % table->nelements) + i) % table->nelements;
 		i++;
 	}
 
@@ -65,11 +63,8 @@ void *hash_get(HASH_TABLE *table, int key) {
 	// aplicar funcao de espalhamento
 	position = key % table->nelements;
 
-	while (table->entries[position].key != key &&
-			table->entries[position].flag &&
-			i < table->nelements) {
-		position = ((key % table->nelements) + i) %
-				table->nelements;
+	while (table->entries[position].key != key && table->entries[position].flag && i < table->nelements) {
+		position = ((key % table->nelements) + i) % table->nelements;
 		i++;
 	}
 
@@ -83,13 +78,30 @@ void *hash_get(HASH_TABLE *table, int key) {
 }
 
 int get_key(char *s){
-	int index=0,c, i, lenght = strlen(s);
+	/*
+	* hash(s)=s[0]+s[1]⋅p+s[2]⋅p2+...+s[n−1]⋅pn−1modm
+	* =∑(i=0 ate n−1)s[i]⋅p^i mod m,
+	*/
+	int index=0,c,flag=0, i=0, lenght = strlen(s);
+	int ppower=0,p=3,m=97;
+
 	for (i = 0; i < lenght; ++i){
-		c=s[i];
+		ppower = pow(p,i+1);
+		c=s[i]*ppower;
 		index += c;
-		//printf("%d   %c ; ",c,s[i] );
 	}
+	index = index % m;
 	return index;
 }
 
-
+HASH_TABLE *hash_create( ) {
+	int i=0, n=17,key=0;
+	HASH_TABLE *table = (HASH_TABLE *)malloc(sizeof(HASH_TABLE));
+	table->nelements = n;
+	table->entries = (HASH_ENTRY *) calloc(n, sizeof(HASH_ENTRY));
+	for (i = 0; i < 14; i++) {
+		key = get_key(palavra_reservada[i]);
+		hash_put(table, key, palavra_reservada[i]);
+	}
+	return table;
+}
