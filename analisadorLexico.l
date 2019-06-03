@@ -1,11 +1,15 @@
 %{
+    // Inclui código de tokens do analisador sintático
+    #include "y.tab.h"
+    #include "hash_linear.h"
     int yywrap(void){};
-%}
-%{
-    enum TOKEN_TYPE {blank, identificador, numero_inteiro, numero_real, 
-                     op_soma, op_subt, op_mult, op_div, op_igual, op_diferente, op_maior_igual,
-                     op_menor_igual, op_menor, op_maior, op_atribuicao, simb_ponto, simb_abrir_parenteses, simb_fechar_parenteses,
-                     simb_ponto_virgula, simb_virgula, simb_dois_pontos};
+
+    // Inicialização tabela de palavras reservadas
+	HASH_TABLE *reservedWordsTable = hash_create( );
+
+    // Funções auxiliares
+    int testIdent(char *identName, int length);
+    int getReservedWordValue(char *word);
 %}
 
 digit [0-9]
@@ -16,26 +20,26 @@ blank [\n\t ]
 invalidCharacter [@]
 
 %%
-({alpha}|_)({alpha}|_|{digit})* {return identificador;}
-{digit}+ {return numero_inteiro;}
-{digit}+\.{digit}+ {return numero_real;}
-"+" {return op_soma;}
-"-" {return op_subt;}
-"*" {return op_mult;}
-"/" {return op_div;}
-"=" {return op_igual;}
-"<>" {return op_diferente;}
-">=" {return op_maior_igual;}
-"<=" {return op_menor_igual;}
-"<" {return op_menor;}
-">" {return op_maior;}
-":=" {return op_atribuicao;}
-"." {return simb_ponto;}
-"(" {return simb_abrir_parenteses;}
-")" {return simb_fechar_parenteses;}
-";" {return simb_ponto_virgula;}
-"," {return simb_virgula;}
-":" {return simb_dois_pontos;}
+({alpha}|_)({alpha}|_|{digit})* {int aux = testIdent(yytext, yyleng); if(aux != ERROR) return aux;}
+{digit}+ {return NUM_INT;}
+{digit}+\.{digit}+ {return NUM_REAL;}
+"+" {return OP_SOMA;}
+"-" {return OP_SUBT;}
+"*" {return OP_MULT;}
+"/" {return OP_DIV;}
+"=" {return OP_IGUAL;}
+"<>" {return OP_DIF;}
+">=" {return OP_MAIOR_IGUAL;}
+"<=" {return OP_MENOR_IGUAL;}
+"<" {return OP_MENOR;}
+">" {return OP_MAIOR;}
+":=" {return OP_ATRIBUICAO;}
+"." {return SIMB_PONTO;}
+"(" {return SIMB_ABRIR_PARENT;}
+")" {return SIMB_FECHAR_PARENT;}
+";" {return SIMB_PONTO_VIRG;}
+"," {return SIMB_VIRG;}
+":" {return SIMB_DOIS_PONTOS;}
 \{.*\} {} // ignora comentarios
 {blank}+ {} //ignora caracteres de novalinha e espaços em branco
 
@@ -44,3 +48,35 @@ invalidCharacter [@]
 {digit}+\.{digit}*{alpha}{digit}* {fprintf(stdout, "%s - erro - numero real mal formado\n", yytext);}
 . {fprintf(stdout, "%s - erro", yytext);}
 %%
+
+int getReservedWordValue(char *word){
+    if(strcmp(word, "begin") == 0) return W_BEGIN;
+    if(strcmp(word, "const") == 0) return W_CONST;
+    if(strcmp(word, "do") == 0) return W_DO;
+    if(strcmp(word, "end") == 0) return W_END;
+    if(strcmp(word, "for") == 0) return W_FOR;
+    if(strcmp(word, "if") == 0) return W_IF;
+    if(strcmp(word, "integer") == 0) return W_INTEGER;
+    if(strcmp(word, "procedure") == 0) return W_PROCEDURE;
+    if(strcmp(word, "program") == 0) return W_PROGRAM;
+    if(strcmp(word, "real") == 0) return W_REAL;
+    if(strcmp(word, "read") == 0) return W_READ;
+    if(strcmp(word, "while") == 0) return W_WHILE;
+    if(strcmp(word, "write") == 0) return W_WRITE;
+    if(strcmp(word, "then") == 0) return W_THEN;
+    if(strcmp(word, "var") == 0) return W_VAR;
+    return ERROR;
+}
+
+int testIdent(char *identName, int length){
+    if(length > 30){
+        fprintf(stdout, "%s - erro - identificador muito grande\n", yytext);
+    } 
+    else{
+        //Procura na tabxela hash a palavra reservada
+        if(hash_get(reservedWordsTable,get_key(identName)) ){
+            return getReservedWordValue(hash_get(reservedWordsTable,get_key(identName)));
+        } else
+            return IDENT;
+    }
+}

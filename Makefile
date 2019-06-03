@@ -1,7 +1,9 @@
-all: lex.yy.c lexer.c lexer.h
+all: lex.yy.c y.tab.c
 	gcc -o a.out *.c -lm
-lex.yy.c: analisadorLexico.l
+lex.yy.c: analisadorLexico.l y.tab.c
 	flex analisadorLexico.l
+y.tab.c: analisadorSintatico.y
+	yacc analisadorSintatico.y -d
 run:
 	./a.out
 test:
@@ -13,4 +15,4 @@ test2:
 test3:
 	./a.out < input3.txt
 clean:
-	rm a.out lex.yy.c out.txt
+	rm a.out lex.yy.c y.tab.c y.tab.h out.txt

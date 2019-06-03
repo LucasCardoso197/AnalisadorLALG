@@ -7,7 +7,7 @@
 
 int main(){
 
-	int result,i;
+	/*int result,i;
 	char type[30], *element = NULL;
 	HASH_TABLE *table = hash_create( );
 
@@ -28,6 +28,6 @@ int main(){
 			}	 
 		}
 		printf("%s - %s\n", yytext, type);
-	}
+	}*/
 	return 0;
 }
