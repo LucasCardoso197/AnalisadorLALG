@@ -1,48 +1,11 @@
-{este programa testa o compilador}
-{testes com operadores}
-+
--
-*
-/
-=
-<
->
-<
-<
->
-{testes com simbolos}
-.
-:
-(
-)
-;  
-,
-: ,
-{testes com numeros}
-10
-1
-94.36
-13.
-1.1
-10000.1
-{testes com identificadores}
-_window
-numeroIdentificacao
-_lucas
-1_lucas
-1a
-readd
-{testes com caracteres invalidos}
-numero@com
-_lucas@
-@number
-{testes com numeros reais mal formados}
-3.a2
-3.3a2
+{programa 1}
 
 program lalg;
 {entrada}
 var a: integer;
 begin
-read(a, @, 1);
+read(a, @, c); {erro lexico q gera erro sintatico}
+write(a b); {erro sintatico}
+write(b);
+wite(a); {nao pega, erro semantico}
 end.
