@@ -1,0 +1,17 @@
+program escreveMaior;
+{programa teste que imprime maior entre 3 numeros}
+{erros declaracao de constante}
+const um = 1;
+cons zero = 0;
+{erros declaracao de variaveis}
+var a, b, c: inteer;
+var x y:real;
+begin
+read(a);
+read(b);
+read(c);
+if a > b then b:=a;
+if c > b then b:=c
+else c:=b;
+write(b);
+end.

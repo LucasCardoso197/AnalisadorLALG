@@ -1,0 +1,19 @@
+program erros1;
+{declaracoes}
+const aa = 2;
+var a : integer;
+var b : real;
+procedure erro (param1:integr); {erro tipo do parametro}
+var variavelLocal:integer;
+begin
+write(a);
+end;
+{inicio dos comandos de programas}
+begin
+erro(b) {erro: falta de ';'}
+erro(c);
+write(1);
+a = b*c; {erro atribuicao mal formada}
+a := b*;
+if a <> b then write(a);
+. {erro falta do simbolo end}

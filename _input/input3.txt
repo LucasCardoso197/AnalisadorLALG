@@ -1,0 +1,18 @@
+program terceiro;
+{exemplo 3}
+var a, a1, b: integer;
+var while: real; {variavel com nome reservado}
+begin
+read(a);
+a1 := a1*2;
+while(a1>0) do
+begin
+write(a1);
+a1 := a1-1;
+end
+end; {simbolo end duplicado}
+while a do {while errado}
+write(a);
+read(a);
+a1 := a1-; {atribuicao errada}
+end.

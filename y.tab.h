@@ -48,17 +48,17 @@ extern int yydebug;
     IDENT = 258,
     NUM_INT = 259,
     NUM_REAL = 260,
-    OP_SOMA = 261,
-    OP_SUBT = 262,
-    OP_MULT = 263,
-    OP_DIV = 264,
-    OP_IGUAL = 265,
-    OP_DIF = 266,
-    OP_MAIOR_IGUAL = 267,
-    OP_MENOR_IGUAL = 268,
-    OP_MENOR = 269,
-    OP_MAIOR = 270,
-    OP_ATRIBUICAO = 271,
+    OP_IGUAL = 261,
+    OP_DIF = 262,
+    OP_MAIOR_IGUAL = 263,
+    OP_MENOR_IGUAL = 264,
+    OP_MENOR = 265,
+    OP_MAIOR = 266,
+    OP_ATRIBUICAO = 267,
+    OP_SOMA = 268,
+    OP_SUBT = 269,
+    OP_MULT = 270,
+    OP_DIV = 271,
     SIMB_PONTO = 272,
     SIMB_ABRIR_PARENT = 273,
     SIMB_FECHAR_PARENT = 274,
@@ -72,33 +72,32 @@ extern int yydebug;
     W_REAL = 282,
     W_INTEGER = 283,
     W_PROCEDURE = 284,
-    W_ELSE = 285,
-    W_READ = 286,
-    W_WRITE = 287,
-    W_WHILE = 288,
-    W_IF = 289,
-    W_DO = 290,
-    W_THEN = 291,
-    W_FOR = 292,
-    W_VAR = 293,
-    ERROR = 294
+    W_READ = 285,
+    W_WRITE = 286,
+    W_WHILE = 287,
+    W_DO = 288,
+    W_THEN = 289,
+    W_FOR = 290,
+    W_VAR = 291,
+    W_IF = 292,
+    W_ELSE = 293
   };
 #endif
 /* Tokens.  */
 #define IDENT 258
 #define NUM_INT 259
 #define NUM_REAL 260
-#define OP_SOMA 261
-#define OP_SUBT 262
-#define OP_MULT 263
-#define OP_DIV 264
-#define OP_IGUAL 265
-#define OP_DIF 266
-#define OP_MAIOR_IGUAL 267
-#define OP_MENOR_IGUAL 268
-#define OP_MENOR 269
-#define OP_MAIOR 270
-#define OP_ATRIBUICAO 271
+#define OP_IGUAL 261
+#define OP_DIF 262
+#define OP_MAIOR_IGUAL 263
+#define OP_MENOR_IGUAL 264
+#define OP_MENOR 265
+#define OP_MAIOR 266
+#define OP_ATRIBUICAO 267
+#define OP_SOMA 268
+#define OP_SUBT 269
+#define OP_MULT 270
+#define OP_DIV 271
 #define SIMB_PONTO 272
 #define SIMB_ABRIR_PARENT 273
 #define SIMB_FECHAR_PARENT 274
@@ -112,16 +111,15 @@ extern int yydebug;
 #define W_REAL 282
 #define W_INTEGER 283
 #define W_PROCEDURE 284
-#define W_ELSE 285
-#define W_READ 286
-#define W_WRITE 287
-#define W_WHILE 288
-#define W_IF 289
-#define W_DO 290
-#define W_THEN 291
-#define W_FOR 292
-#define W_VAR 293
-#define ERROR 294
+#define W_READ 285
+#define W_WRITE 286
+#define W_WHILE 287
+#define W_DO 288
+#define W_THEN 289
+#define W_FOR 290
+#define W_VAR 291
+#define W_IF 292
+#define W_ELSE 293
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
