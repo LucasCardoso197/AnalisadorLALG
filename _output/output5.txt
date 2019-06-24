@@ -1,0 +1,7 @@
+Line 1: syntax error, unexpected identifier, expecting 'program'
+Line 4: syntax error, unexpected identifier, expecting 'begin' or 'procedure' or 'var'
+Line 5: syntax error, unexpected 'const', expecting 'begin' or 'procedure' or 'var'
+Line 6: syntax error, unexpected identifier, expecting 'real' or 'integer'
+Line 8: syntax error, unexpected identifier, expecting ':'
+Line 16: syntax error, unexpected ')', expecting identifier
+Line 20: syntax error, unexpected identifier, expecting 'do'

@@ -1,0 +1,5 @@
+Line 5: syntax error, unexpected identifier, expecting 'begin' or 'const' or 'procedure' or 'var'
+Line 7: syntax error, unexpected identifier, expecting 'real' or 'integer'
+Line 8: syntax error, unexpected identifier, expecting ':'
+Line 9: lexical error at 1erro, badly formed identifier
+Line 9: syntax error, unexpected ':', expecting identifier

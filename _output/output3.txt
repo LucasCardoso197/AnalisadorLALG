@@ -1,0 +1,4 @@
+Line 4: syntax error, unexpected 'while', expecting identifier
+Line 13: syntax error, unexpected 'end', expecting ';'
+Line 14: syntax error, unexpected identifier, expecting '('
+Line 17: syntax error, unexpected ';', expecting identifier or integer number or real number or '('

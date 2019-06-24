@@ -1,0 +1,24 @@
+progrm prog; { program escrito errado }
+{ declaracao de variaveis }
+var x: integer;
+char x; { declaracao errada}
+const y=3; { constante declarada depois de variavel }
+var y:char; { tipo errado }
+{ declaracao de procedimento }
+procedure proc (int x, int y); { parametros declarados errados }
+begin
+	readln(x);
+	if x > 3 then
+		x := 3
+	else
+		x := 4;
+end;
+procedure proc (x:integer;) { parametros declarados errados }
+begin
+	writeln(x);
+	while (x > 3) { faltou do }
+		x := x + 2;
+end;
+begin
+	proc (a, b); { nao tem parametros }
+end.
